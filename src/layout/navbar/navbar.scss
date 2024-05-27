@@ -1,0 +1,61 @@
+:root {
+  --nav-height: 60px;
+  --nav-pad: clamp(10px, 4vw, 200px);
+}
+
+.nav {
+  &-bar {
+    display: grid;
+    grid-auto-flow: column;
+    height: var(--nav-height);
+    padding: 10px var(--nav-pad);
+    width: calc(100vw - var(--nav-pad) * 2);
+    align-content: center;
+    color: #ffffff;
+
+    &-active {
+      color: #fffffff1;
+    }
+  }
+  &-menu {
+    color: #ffffff90;
+    display: grid;
+    grid-auto-flow: column;
+    align-content: center;
+    column-gap: clamp(0px, var(--nav-pad), 60px);
+    justify-self: end;
+    transition: 0.2s ease-in;
+
+    &-items {
+      transition: inherit;
+      font-weight: 400;
+      font-size: clamp(16px, 1.8vw, 22px);
+      justify-self: center;
+      cursor: pointer;
+
+      &[state="true"] {
+        background-color: lightblue;
+      }
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+  &-title {
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  :root {
+    --nav-height: 80px;
+    --nav-pad: clamp(0px, 8vw, 300px);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  :root {
+    --nav-height: 110px;
+  }
+}
