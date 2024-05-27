@@ -10,6 +10,15 @@ export default function NavBar() {
     { name: "About", selected: false },
     { name: "Contact", selected: false },
   ]);
+
+  const handleClick = (index) => {
+    setMenuArray((prev) =>
+      prev.map((item, i) =>
+        i === index ? { ...item, selected: true } : { ...item, selected: false }
+      )
+    );
+    setCurrentMenu(index);
+  };
   return (
     <div className="nav-bar">
       <div className="nav-title">
@@ -17,19 +26,7 @@ export default function NavBar() {
       </div>
       <div className="nav-menu">
         {menuArray.map((item, index) => (
-          <MenuItems
-            key={index}
-            {...item}
-            onclick={() =>
-              setMenuArray((prev) =>
-                prev.map((item, i) =>
-                  i === index
-                    ? { ...item, selected: true }
-                    : { ...item, selected: false }
-                )
-              )
-            }
-          />
+          <MenuItems key={index} {...item} onclick={() => handleClick(index)} />
         ))}
       </div>
     </div>

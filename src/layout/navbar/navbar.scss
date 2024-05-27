@@ -11,11 +11,7 @@
     padding: 10px var(--nav-pad);
     width: calc(100vw - var(--nav-pad) * 2);
     align-content: center;
-    color: #ffffff;
-
-    &-active {
-      color: #fffffff1;
-    }
+    color: #fffffff5;
   }
   &-menu {
     color: #ffffff90;
@@ -29,16 +25,19 @@
     &-items {
       transition: inherit;
       font-weight: 400;
-      font-size: clamp(16px, 1.8vw, 22px);
+      font-size: clamp(16px, 1.8vw, 20px);
       justify-self: center;
       cursor: pointer;
 
       &[state="true"] {
-        background-color: lightblue;
+        color: #fffffff5;
       }
 
       &:hover {
-        color: #ffffff;
+        // transform: scale(1.03);
+      }
+      &:active {
+        transform: scale(0.95);
       }
     }
   }
