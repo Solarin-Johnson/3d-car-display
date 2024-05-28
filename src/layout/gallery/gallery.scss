@@ -1,0 +1,23 @@
+.gallery {
+  &-container {
+    display: grid;
+    grid-auto-flow: row;
+    padding: 20px var(--nav-pad);
+  }
+  &-content {
+    display: grid;
+    // grid-template-columns: repeat(5, 100%);
+    // grid-auto-flow: column;
+    position: relative;
+  }
+  &-view {
+    display: grid;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  &-footer {
+    align-self: last baseline;
+    color: #fffffff5;
+  }
+}

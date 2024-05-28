@@ -5,6 +5,7 @@
 
 .nav {
   &-bar {
+    position: fixed;
     display: grid;
     grid-auto-flow: column;
     height: var(--nav-height);
@@ -12,6 +13,7 @@
     width: calc(100vw - var(--nav-pad) * 2);
     align-content: center;
     color: #fffffff5;
+    z-index: 100;
   }
   &-menu {
     color: #ffffff90;
