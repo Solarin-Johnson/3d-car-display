@@ -51,12 +51,13 @@
 @media screen and (min-width: 1440px) {
   :root {
     --nav-height: 80px;
-    --nav-pad: clamp(0px, 8vw, 300px);
+    --nav-pad: clamp(0px, 6vw, 230px);
   }
 }
 
 @media screen and (min-width: 2560px) {
   :root {
     --nav-height: 110px;
+    --nav-pad: clamp(0px, 8vw, 300px);
   }
 }

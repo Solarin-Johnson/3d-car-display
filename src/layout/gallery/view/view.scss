@@ -1,5 +1,6 @@
 :root {
   --desc-size: 10px;
+  --name-size: clamp(24px, 3vw, 42px);
 }
 
 .gallery {
@@ -23,25 +24,29 @@
     }
   }
   &-name {
-    font-size: clamp(24px, 4vw, 58px);
+    font-size: var(--name-size);
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     min-width: fit-content;
+    max-width: 400px;
   }
   &-desc {
     opacity: 0.8;
     font-weight: 300;
     line-height: 1.5;
     padding-top: 10px;
+    width: 80%;
     max-width: 350px;
     font-size: clamp(15px, 1vw, 20px);
   }
   &-specs {
+    align-self: center;
     justify-self: end;
     display: grid;
     align-content: space-between;
     border-left: 2px solid #ffffff60;
     max-height: 220px;
+    height: 100%;
   }
   &-spec {
     // background: green;
@@ -54,7 +59,8 @@
     padding-right: 10px;
 
     &::after {
-      transition: 250ms ease-in background-color, 700ms ease-in box-shadow;
+      // transition: 250ms ease-in background-color, 700ms ease-in box-shadow;
+      transition: inherit;
       content: "";
       position: absolute;
       width: 20px;
@@ -75,5 +81,11 @@
   &-ratings {
     padding-top: 10px;
     font-size: clamp(20px, 2vw, 40px);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  :root {
+    --name-size: clamp(24px, 4vw, 56px);
   }
 }
