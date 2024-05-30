@@ -1,0 +1,81 @@
+.gallery {
+  &-footer {
+    align-self: last baseline;
+    display: grid;
+    color: #fffffff5;
+    grid-auto-flow: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px var(--nav-pad);
+
+    .brands {
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 20px;
+      opacity: 0.9;
+
+      * {
+        cursor: pointer;
+        transition: 0.15s ease-in;
+        &:hover {
+          opacity: 1;
+        }
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+
+    &-nav {
+      justify-self: center;
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: center;
+      max-width: clamp(50px, 100%, 300px);
+      column-gap: clamp(10px, 1vw, 30px);
+
+      span {
+        cursor: pointer;
+      }
+
+      .car {
+        &-nav {
+          max-width: 100%;
+          display: grid;
+          grid-auto-flow: column;
+          //   scroll-snap-type: x mandatory;
+          scroll-behavior: smooth;
+          column-gap: 10px;
+          overflow: auto;
+          //   mask-image: linear-gradient(
+          //     to right,
+          //     #00000005,
+          //     #00000099,
+          //     #000,
+          //     #000,
+          //     #00000099,
+          //     #00000005
+          //   );
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          #demo {
+            background-color: transparent !important;
+          }
+
+          > * {
+            scroll-snap-align: center;
+            width: 80px;
+            height: 40px;
+            background-color: #ffffffd1;
+            border-radius: 4px;
+            scroll-snap-stop: always;
+          }
+        }
+      }
+    }
+  }
+}

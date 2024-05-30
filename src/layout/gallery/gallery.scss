@@ -10,7 +10,7 @@
     display: grid;
     max-height: 100%;
     grid-template-rows: repeat(4, 100%);
-    overflow: auto;
+    overflow: hidden;
     // grid-auto-flow: row;
     position: relative;
     scroll-snap-type: y mandatory;
@@ -23,40 +23,14 @@
     &::-webkit-scrollbar {
       display: none;
     }
-    > * {
-      &:nth-child(1) {
-        animation-name: slide-animation-1;
-      }
-      animation-timeline: scroll(block nearest);
-      scroll-snap-stop: always;
-      scroll-snap-align: start;
-    }
-  }
-  &-footer {
-    align-self: last baseline;
-    display: grid;
-    color: #fffffff5;
-    grid-auto-flow: column;
-    justify-content: space-between;
-    padding: 20px var(--nav-pad);
-
-    .brands {
-      display: grid;
-      grid-auto-flow: column;
-      column-gap: 20px;
-      opacity: 0.9;
-
-      * {
-        cursor: pointer;
-        transition: 0.15s ease-in;
-        &:hover {
-          opacity: 1;
-        }
-        &:active {
-          transform: scale(0.9);
-        }
-      }
-    }
+    // > * {
+    //   &:nth-child(1) {
+    //     animation-name: slide-animation-1;
+    //   }
+    //   animation-timeline: scroll(block nearest);
+    //   scroll-snap-stop: always;
+    //   scroll-snap-align: start;
+    // }
   }
 }
 

@@ -2,11 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 import "./gallery.scss";
 import { cars } from "../../utils";
 import CarGallery from "./view";
+import GalleryFooter from "../footer";
 
 export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
   const scrollContainer = useRef(null);
+
+  useEffect(() => {
+    const scroll = scrollContainer.current;
+    scroll.scrollTo({
+      left: currentIndex * scroll.offsetHeight,
+      behavior: "smooth",
+    });
+  }, [currentIndex]);
 
   return (
     <div className="gallery-container">
@@ -20,21 +29,10 @@ export default function Gallery() {
           />
         ))}
       </div>
-      <GalleryFooter />
+      <GalleryFooter
+        currentIndex={(data) => setCurrentIndex(data)}
+        prevIndex={(data) => setPrevIndex(data)}
+      />
     </div>
   );
 }
-
-const GalleryFooter = () => {
-  return (
-    <div className="gallery-footer">
-      <div className="">Company Info</div>
-      <div className=""></div>
-      <div className="brands">
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-facebook-f"></i>
-        <i class="fa-brands fa-youtube"></i>
-      </div>
-    </div>
-  );
-};
