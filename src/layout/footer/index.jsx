@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./footer.scss";
 
-export default function GalleryFooter() {
+export default function GalleryFooter({ current, previous }) {
   return (
     <div className="gallery-footer">
       <div className="">Company Info</div>
-      <FooterNav />
+      <FooterNav current={current} previous={previous} />
       <div className="brands">
         <i class="fa-brands fa-twitter"></i>
         <i class="fa-brands fa-facebook-f"></i>
@@ -15,24 +15,29 @@ export default function GalleryFooter() {
   );
 }
 
-const FooterNav = () => {
+const FooterNav = ({ current, previous }) => {
   const carNavRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const next = () => {
-    currentIndex < 3 && setCurrentIndex(currentIndex + 1);
+    if (currentIndex < 3) {
+      setCurrentIndex(currentIndex + 1);
+      previous(currentIndex);
+      current(currentIndex + 1);
+    }
   };
   const prev = () => {
-    currentIndex > 0 && setCurrentIndex(currentIndex - 1);
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      previous(currentIndex);
+      current(currentIndex - 1);
+    }
   };
-
-  console.log(currentIndex);
 
   useEffect(() => {
     const carNav = carNavRef.current;
     const clean = carNav.children[1].offsetWidth;
-    console.log(carNav.children[currentIndex + 1]);
     carNav.scrollTo({
-      left: currentIndex > 0 ? clean * currentIndex + clean / 2.3 : clean / 4,
+      left: currentIndex > 0 ? clean * currentIndex + clean / 2.2 : clean / 4,
       behavior: "smooth",
     });
   }, [currentIndex]);

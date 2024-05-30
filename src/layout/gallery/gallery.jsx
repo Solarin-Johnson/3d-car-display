@@ -8,6 +8,7 @@ export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
   const scrollContainer = useRef(null);
+  console.log(currentIndex, prevIndex);
 
   useEffect(() => {
     const scroll = scrollContainer.current;
@@ -30,8 +31,8 @@ export default function Gallery() {
         ))}
       </div>
       <GalleryFooter
-        currentIndex={(data) => setCurrentIndex(data)}
-        prevIndex={(data) => setPrevIndex(data)}
+        current={(data) => setCurrentIndex(data)}
+        previous={(data) => setPrevIndex(data)}
       />
     </div>
   );
