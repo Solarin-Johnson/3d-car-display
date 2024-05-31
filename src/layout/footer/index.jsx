@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import "./footer.scss";
 
-export default function GalleryFooter({ current, previous }) {
+export default function GalleryFooter({ current, previous, fullscreen }) {
   return (
     <div className="gallery-footer">
       <div className="">Company Info</div>
-      <FooterNav current={current} previous={previous} />
+      <FooterNav
+        current={current}
+        previous={previous}
+        fullscreen={fullscreen}
+      />
       <div className="brands">
         <i class="fa-brands fa-twitter"></i>
         <i class="fa-brands fa-facebook-f"></i>
@@ -15,7 +19,7 @@ export default function GalleryFooter({ current, previous }) {
   );
 }
 
-const FooterNav = ({ current, previous }) => {
+const FooterNav = ({ current, previous, fullscreen }) => {
   const carNavRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const next = () => {
@@ -42,7 +46,7 @@ const FooterNav = ({ current, previous }) => {
     });
   }, [currentIndex]);
   return (
-    <div className="gallery-footer-nav">
+    <div className="gallery-footer-nav" id={fullscreen ? "hide" : ""}>
       <span
         class="material-symbols-rounded"
         id={currentIndex <= 0 ? "hide" : ""}

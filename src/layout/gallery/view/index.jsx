@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GalleryImage from "../image";
 import "./view.scss";
 
-export default function CarGallery({ data, index, currentIndex, prevIndex }) {
+export default function CarGallery({
+  data,
+  index,
+  currentIndex,
+  prevIndex,
+  full,
+}) {
   const state =
     index === currentIndex ? "current" : index === prevIndex ? "past" : "";
   const stateInv = index < currentIndex ? "prev" : "next";
@@ -21,7 +27,10 @@ export default function CarGallery({ data, index, currentIndex, prevIndex }) {
       <div className="gallery-image">
         <GalleryImage
           src={data.src}
-          fullscreen={(data) => setFullscreen(data)}
+          fullscreen={(data) => {
+            setFullscreen(data);
+            full(data);
+          }}
         />
       </div>
       <div className="gallery-specs">

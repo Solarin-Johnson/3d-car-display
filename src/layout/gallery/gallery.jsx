@@ -7,6 +7,7 @@ import GalleryFooter from "../footer";
 export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
+  const [fullscreen, setFullscreen] = useState(false);
   const scrollContainer = useRef(null);
   console.log(currentIndex, prevIndex);
 
@@ -28,12 +29,14 @@ export default function Gallery() {
             index={index}
             currentIndex={currentIndex}
             prevIndex={prevIndex}
+            full={(data) => setFullscreen(data)}
           />
         ))}
       </div>
       <GalleryFooter
         current={(data) => setCurrentIndex(data)}
         previous={(data) => setPrevIndex(data)}
+        fullscreen={fullscreen}
       />
     </div>
   );
