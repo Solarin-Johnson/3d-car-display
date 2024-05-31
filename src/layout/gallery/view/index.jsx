@@ -1,11 +1,13 @@
 import Image3d from "../../../components/3d";
 import "./view.scss";
 
-export default function CarGallery({ data, key, currentIndex, prevIndex }) {
+export default function CarGallery({ data, index, currentIndex, prevIndex }) {
   const state =
-    key === currentIndex ? "current" : key === prevIndex ? "past" : "";
+    index === currentIndex ? "current" : index === prevIndex ? "past" : "";
+  const stateInv = index < currentIndex ? "prev" : "next";
+
   return (
-    <div className={`gallery-view ${state}`}>
+    <div className={`gallery-view ${state} ${stateInv}`}>
       <div className="gallery-hero-container">
         <GalleryHero name={data.name} description={data.description} />
         <GalleryRatings />
@@ -42,7 +44,7 @@ const GallerySpecs = ({ specs }) => {
   return (
     <>
       {specs.map((spec, index) => (
-        <div key={index} className="gallery-spec">
+        <div index={index} className="gallery-spec">
           <div className="gallery-spec-bullet"></div>
           <div className="gallery-spec-value">{spec.value}</div>
         </div>

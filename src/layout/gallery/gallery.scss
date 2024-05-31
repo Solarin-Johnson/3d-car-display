@@ -9,12 +9,12 @@
   &-content {
     display: grid;
     max-height: 100%;
-    grid-template-rows: repeat(4, 100%);
-    overflow: hidden;
-    // grid-auto-flow: row;
-    position: relative;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    // grid-template-rows: repeat(4, 100%);
+    // overflow: hidden;
+    // // grid-auto-flow: row;
+    // position: relative;
+    // scroll-snap-type: y mandatory;
+    // scroll-behavior: smooth;
 
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     mask-repeat: no-repeat;
@@ -31,16 +31,5 @@
     //   scroll-snap-stop: always;
     //   scroll-snap-align: start;
     // }
-  }
-}
-
-@keyframes slide-animation-1 {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.2);
-    opacity: 0;
   }
 }

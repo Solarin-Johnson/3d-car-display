@@ -7,14 +7,36 @@
   &-view {
     display: grid;
     grid-auto-flow: column;
-    // position: absolute;
-    // opacity: 0;
-    // z-index: -1;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    width: calc(100% - var(--nav-pad) * 2);
+    opacity: 0;
+    z-index: -1;
     padding: 20px var(--nav-pad);
     align-content: center;
     overflow: hidden;
     color: #fffffff5;
     grid-template-columns: auto 1fr auto;
+    transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) transform, 0.9s opacity;
+    transform: scale(2) translateY(50%);
+
+    &.past {
+      transform: scale(0.5) translateY(-150%);
+      opacity: 0;
+      z-index: -1;
+    }
+    &.prev {
+      transform: scale(0.5) translateY(-150%);
+    }
+    &.next {
+      transform: scale(2) translateY(50%);
+    }
+    &.current {
+      opacity: 1;
+      z-index: 2;
+      transform: scale(1) translateY(0);
+    }
   }
   &-hero {
     &-container {
@@ -81,6 +103,50 @@
   &-ratings {
     padding-top: 10px;
     font-size: clamp(20px, 2vw, 40px);
+  }
+}
+
+@keyframes slide-animation-in {
+  0% {
+    transform: scale(2.5) translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-animation-out {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) translateY(-150%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-animation-prev {
+  0% {
+    transform: scale(0.5) translateY(-150%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-animation-next {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) translateY(-150%);
+    opacity: 0;
   }
 }
 
