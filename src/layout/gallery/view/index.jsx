@@ -33,8 +33,10 @@ export default function CarGallery({
           }}
         />
       </div>
-      <div className="gallery-specs">
-        <GallerySpecs specs={data.specs} />
+      <div className="gallery-specs-container">
+        <div className="gallery-specs">
+          <GallerySpecs specs={data.specs} />
+        </div>
       </div>
     </div>
   );

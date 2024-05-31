@@ -10,7 +10,7 @@
 
     &-close {
       position: absolute;
-      top: calc(var(--nav-height) * -1 + 50px);
+      top: calc(var(--nav-height) * -1 + 40px);
       right: var(--nav-pad);
       transition: 0.6s ease-in-out opacity, 0.6s ease-in-out transform;
       transition-delay: 0.5s;
@@ -18,7 +18,7 @@
         cursor: pointer;
         transition: 0.2s ease-in;
         &:hover {
-          transform: scale(1.1);
+          transform: scale(1.2);
         }
       }
       &.hide {
@@ -39,7 +39,7 @@
     border: 2px solid #ffffff60;
     border-radius: 10rem;
     height: auto;
-    transition: 0.4s;
+    transition: 0.4s, 0s left;
     cursor: pointer;
 
     &:hover {
