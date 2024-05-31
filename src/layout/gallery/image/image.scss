@@ -1,6 +1,7 @@
 .gallery {
   &-image {
     width: 100%;
+    // background-color: #fff;
     // min-width: 200px;
     display: grid;
 
@@ -28,6 +29,8 @@
     }
   }
   &-explore {
+    position: fixed;
+    left: calc((50vw - clamp(100px, 30%, 140px) / 2) - 4px);
     align-self: last baseline;
     text-align: center;
     justify-self: center;
