@@ -13,7 +13,7 @@
     width: calc(100vw - var(--nav-pad) * 2);
     align-content: center;
     color: #fffffff5;
-    z-index: 100;
+    // z-index: 100;
   }
   &-menu {
     color: #ffffff90;
@@ -22,7 +22,7 @@
     align-content: center;
     column-gap: clamp(0px, var(--nav-pad), 60px);
     justify-self: end;
-    transition: 0.2s ease-in;
+    transition: 0.2s ease-in, 0.4s ease-in opacity;
 
     &-items {
       transition: inherit;

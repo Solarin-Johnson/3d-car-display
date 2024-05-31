@@ -15,7 +15,7 @@
     z-index: -1;
     padding: 20px var(--nav-pad);
     align-content: center;
-    overflow: hidden;
+    // overflow: hidden;
     color: #fffffff5;
     grid-template-columns: auto 1fr auto;
     transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) transform, 0.9s opacity;
@@ -36,6 +36,9 @@
       opacity: 1;
       z-index: 2;
       transform: scale(1) translateY(0);
+    }
+    > * {
+      transition: 0.8s, 0.3s opacity !important;
     }
     &.fullscreen {
       > :first-child,

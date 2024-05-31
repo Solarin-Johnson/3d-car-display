@@ -6,13 +6,33 @@
 
     height: calc(100dvh - 2.5 * var(--nav-height) - 20px);
     padding-bottom: 20px;
+
+    &-close {
+      position: absolute;
+      top: calc(var(--nav-height) * -1 + 50px);
+      right: var(--nav-pad);
+      transition: 0.6s ease-in-out opacity, 0.6s ease-in-out transform;
+      transition-delay: 0.5s;
+      span {
+        cursor: pointer;
+        transition: 0.2s ease-in;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      &.hide {
+        transition: 0.4s;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
   }
   &-explore {
     align-self: last baseline;
     text-align: center;
     justify-self: center;
     padding: 12px 0;
-    width: clamp(80px, 30%, 140px);
+    width: clamp(100px, 30%, 140px);
     border: 2px solid #ffffff60;
     border-radius: 10rem;
     height: auto;
