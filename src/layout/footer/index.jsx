@@ -43,7 +43,11 @@ const FooterNav = ({ current, previous }) => {
   }, [currentIndex]);
   return (
     <div className="gallery-footer-nav">
-      <span class="material-symbols-rounded" onClick={prev}>
+      <span
+        class="material-symbols-rounded"
+        id={currentIndex <= 0 ? "hide" : ""}
+        onClick={prev}
+      >
         chevron_left
       </span>
       <div className="car-nav" ref={carNavRef}>
@@ -54,7 +58,11 @@ const FooterNav = ({ current, previous }) => {
         <div></div>
         <div id="demo"></div>
       </div>
-      <span class="material-symbols-rounded" onClick={next}>
+      <span
+        class="material-symbols-rounded"
+        id={currentIndex >= 3 ? "hide" : ""}
+        onClick={next}
+      >
         chevron_right
       </span>
     </div>

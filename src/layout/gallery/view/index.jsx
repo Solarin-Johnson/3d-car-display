@@ -1,19 +1,28 @@
-import Image3d from "../../../components/3d";
+import { useState } from "react";
+import GalleryImage from "../image";
 import "./view.scss";
 
 export default function CarGallery({ data, index, currentIndex, prevIndex }) {
   const state =
     index === currentIndex ? "current" : index === prevIndex ? "past" : "";
   const stateInv = index < currentIndex ? "prev" : "next";
+  const [fullscreen, setFullscreen] = useState(false);
 
   return (
-    <div className={`gallery-view ${state} ${stateInv}`}>
+    <div
+      className={`gallery-view ${state} ${stateInv} ${
+        fullscreen ? "fullscreen" : ""
+      }`}
+    >
       <div className="gallery-hero-container">
         <GalleryHero name={data.name} description={data.description} />
         <GalleryRatings />
       </div>
       <div className="gallery-image">
-        <Image3d src={data.src} />
+        <GalleryImage
+          src={data.src}
+          fullscreen={(data) => setFullscreen(data)}
+        />
       </div>
       <div className="gallery-specs">
         <GallerySpecs specs={data.specs} />
