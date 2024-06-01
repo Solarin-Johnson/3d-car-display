@@ -1,22 +1,14 @@
 import React, { Suspense, useRef } from "react";
-import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   OrbitControls,
   useGLTF,
   Environment,
   ContactShadows,
   Loader,
-  Stars,
 } from "@react-three/drei";
 import myimage from "../assets/ferrari_sf90_stradale.glb";
-import { useSpring, a, config } from "@react-spring/three";
-import {
-  Bloom,
-  EffectComposer,
-  DepthOfField,
-} from "@react-three/postprocessing";
-
-import * as THREE from "three";
+import { useSpring, a } from "@react-spring/three";
 
 function Model(props) {
   const { scene } = useGLTF(myimage);
@@ -26,7 +18,7 @@ function Model(props) {
     if (child.isMesh) {
       child.castShadow = true;
       child.receiveShadow = true;
-      console.log(child.name);
+      // console.log(child.name);
       // child.material.roughness = 0; // Adjust roughness
       // child.material.metalness = 0;
     }
@@ -109,15 +101,15 @@ function Scene() {
 export default function Image3d() {
   return (
     <>
-      {/* <Canvas
+      <Canvas
         shadows
         camera={{ position: [17, 1.6, 2], fov: 15 }}
         // camera={{ position: [13, 5, 11], fov: 15 }}
-        style={{ height: "100vh", backgroundColor: "#000000de" }}
+        style={{ height: "150%" }}
       >
         <Scene />
       </Canvas>
-      <Loader /> */}
+      <Loader />
     </>
   );
 }

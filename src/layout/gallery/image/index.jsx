@@ -9,13 +9,14 @@ export default function GalleryImage({ src, fullscreen }) {
     const navBar = document.querySelectorAll(".nav-bar")[0];
     if (navBar) {
       navBar.lastChild.style.opacity = state ? "0" : "1";
+      navBar.lastChild.style.visibility = "visible";
       setTimeout(() => {
         navBar.lastChild.style.visibility = state ? "hidden" : "visible";
       }, 400);
     }
   }, [state]);
   return (
-    <div className="gallery-image">
+    <>
       <div className={`gallery-image-close ${!state ? "hide" : ""}`}>
         <span
           onClick={() => {
@@ -27,7 +28,7 @@ export default function GalleryImage({ src, fullscreen }) {
           close
         </span>
       </div>
-      <div>
+      <div className="car-image">
         <Image3d src={src} />
       </div>
       <div
@@ -39,6 +40,6 @@ export default function GalleryImage({ src, fullscreen }) {
       >
         Explore
       </div>
-    </div>
+    </>
   );
 }

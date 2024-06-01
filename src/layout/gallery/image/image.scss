@@ -4,21 +4,21 @@
     // background-color: #fff;
     // min-width: 200px;
     display: grid;
-
     height: calc(100dvh - 2.5 * var(--nav-height) - 20px);
     padding-bottom: 20px;
 
     &-close {
       position: absolute;
-      top: calc(var(--nav-height) * -1 + 40px);
-      right: var(--nav-pad);
+      top: calc(var(--nav-height) / -2);
+      right: 0;
       transition: 0.6s ease-in-out opacity, 0.6s ease-in-out transform;
       transition-delay: 0.5s;
       span {
         cursor: pointer;
         transition: 0.2s ease-in;
+        font-size: clamp(24px, 0.8vw, 32px);
         &:hover {
-          transform: scale(1.2);
+          transform: scale(1.15);
         }
       }
       &.hide {
@@ -27,23 +27,33 @@
         visibility: hidden;
       }
     }
+    .car-image {
+      align-self: center;
+      display: grid;
+      height: fit-content;
+      canvas {
+        background-color: red;
+        width: 80%;
+      }
+    }
   }
   &-explore {
     position: fixed;
-    left: calc((50vw - clamp(100px, 30%, 140px) / 2) - 4px);
+    // left: calc((50vw - clamp(100px, 30%, 140px) / 2) - 4px);
     align-self: last baseline;
     text-align: center;
     justify-self: center;
-    padding: 12px 0;
+    padding: clamp(12px, 0.7vw, 14px) 0;
     width: clamp(100px, 30%, 140px);
     border: 2px solid #ffffff60;
+    margin-bottom: calc(clamp(0px, 0.8vw, 50px) + 20px);
     border-radius: 10rem;
     height: auto;
     transition: 0.4s, 0s left;
     cursor: pointer;
 
     &:hover {
-      border-color: #fffffff5;
+      border-color: #ffffffab;
     }
     &:active {
       transform: scale(0.95);

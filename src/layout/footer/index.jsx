@@ -4,7 +4,7 @@ import "./footer.scss";
 export default function GalleryFooter({ current, previous, fullscreen }) {
   return (
     <div className="gallery-footer">
-      <div className="">Company Info</div>
+      <div className="info">Company Info</div>
       <FooterNav
         current={current}
         previous={previous}
