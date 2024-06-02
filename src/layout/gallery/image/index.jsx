@@ -3,7 +3,7 @@ import Image3d from "../../../components/3d";
 import "./image.scss";
 import thumb from "../../../assets/ferrarri.webp";
 
-export default function GalleryImage({ src, fullscreen }) {
+export default function GalleryImage({ src, fullscreen, current }) {
   const [state, setState] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function GalleryImage({ src, fullscreen }) {
         </span>
       </div>
       <div className="car-image">
-        {state && <Image3d src={src} />}
+        {current && <Image3d src={src} state={state} />}
         <img src={thumb} id={state && "shrink"} alt="car" />
       </div>
       <div

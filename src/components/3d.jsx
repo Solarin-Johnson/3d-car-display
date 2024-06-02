@@ -34,18 +34,18 @@ function AnimatedModel(props) {
   const { scale, rotation } = useSpring({
     from: { scale: [0.1, 0.1, 0.1], rotation: [0, 0, 0] },
     to: async (next) => {
-      await next({ scale: [1, 1, 1], rotation: [0, Math.PI / 4, 0] });
+      await next({ scale: [1, 1, 1], rotation: [0, -0.4, 0] });
       setAnimationDone(true); // Indicate the animation is done
     },
     config: { tension: 280, friction: 60, duration: 1000 },
   });
 
   // Use useFrame for continuous rotation after initial animation
-  useFrame(() => {
-    if (animationDone && groupRef.current) {
-      groupRef.current.rotation.y += 0.002; // Continuous rotation speed
-    }
-  });
+  // useFrame(() => {
+  //   if (animationDone && groupRef.current) {
+  //     groupRef.current.rotation.y += 0.002; // Continuous rotation speed
+  //   }
+  // });
 
   return (
     <a.group ref={groupRef} scale={scale} rotation={rotation}>
@@ -54,7 +54,7 @@ function AnimatedModel(props) {
   );
 }
 
-function Scene() {
+function Scene({ state }) {
   const controlsRef = useRef();
   const { camera } = useThree();
 
@@ -79,8 +79,8 @@ function Scene() {
       <Suspense fallback={null}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[13, 5, 11]} intensity={0.2} />
-        {/* <AnimatedModel /> */}
-        <Model />
+        {state && <AnimatedModel />}
+        {/* <Model /> */}
       </Suspense>
 
       {/* Orbit controls for interaction */}
@@ -98,7 +98,7 @@ function Scene() {
   );
 }
 
-export default function Image3d() {
+export default function Image3d({ state }) {
   return (
     <>
       <Canvas
@@ -107,7 +107,7 @@ export default function Image3d() {
         // camera={{ position: [13, 5, 11], fov: 15 }}
         // style={{ height: "150%" }}
       >
-        <Scene />
+        <Scene state={state} />
       </Canvas>
       <Loader />
     </>

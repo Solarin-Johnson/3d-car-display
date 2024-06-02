@@ -26,6 +26,7 @@ export default function CarGallery({
       </div>
       <GalleryImage
         src={data.src}
+        current={index === currentIndex}
         fullscreen={(data) => {
           setFullscreen(data);
           full(data);

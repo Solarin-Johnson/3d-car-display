@@ -44,6 +44,8 @@
       transition: 0.8s transform, 0.5s opacity !important;
     }
     &.fullscreen {
+      // grid-template-columns: auto auto auto;
+      justify-content: center;
       > :first-child,
       > :last-child {
         transition: 0.8s, 0.5s opacity, 0s width ease-in 1s !important;
