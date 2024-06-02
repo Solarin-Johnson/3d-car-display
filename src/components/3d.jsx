@@ -105,7 +105,7 @@ export default function Image3d() {
         shadows
         camera={{ position: [17, 1.6, 2], fov: 15 }}
         // camera={{ position: [13, 5, 11], fov: 15 }}
-        style={{ height: "150%" }}
+        // style={{ height: "150%" }}
       >
         <Scene />
       </Canvas>

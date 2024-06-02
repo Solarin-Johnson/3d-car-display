@@ -24,15 +24,13 @@ export default function CarGallery({
         <GalleryHero name={data.name} description={data.description} />
         <GalleryRatings />
       </div>
-      <div className="gallery-image">
-        <GalleryImage
-          src={data.src}
-          fullscreen={(data) => {
-            setFullscreen(data);
-            full(data);
-          }}
-        />
-      </div>
+      <GalleryImage
+        src={data.src}
+        fullscreen={(data) => {
+          setFullscreen(data);
+          full(data);
+        }}
+      />
       <div className="gallery-specs-container">
         <div className="gallery-specs">
           <GallerySpecs specs={data.specs} />

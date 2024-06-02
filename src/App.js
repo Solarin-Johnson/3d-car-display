@@ -7,9 +7,9 @@ import Image3d from "./components/3d";
 export default function App() {
   return (
     <>
-      {/* <NavBar />
-      <Gallery /> */}
-      <Image3d />
+      <NavBar />
+      <Gallery />
+      {/* <Image3d /> */}
     </>
   );
 }

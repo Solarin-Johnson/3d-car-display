@@ -1,7 +1,7 @@
 .gallery {
   &-image {
     width: 100%;
-    // background-color: #fff;
+    // background-color: red;
     // min-width: 200px;
     display: grid;
     height: calc(100dvh - 2.5 * var(--nav-height) - 20px);
@@ -9,7 +9,7 @@
 
     &-close {
       position: absolute;
-      top: calc(var(--nav-height) / -2);
+      top: calc((var(--nav-height) / -2) - 10px);
       right: 0;
       transition: 0.6s ease-in-out opacity, 0.6s ease-in-out transform;
       transition-delay: 0.5s;
@@ -21,19 +21,46 @@
           transform: scale(1.15);
         }
       }
-      &.hide {
-        transition: 0.4s;
-        opacity: 0;
-        visibility: hidden;
-      }
     }
     .car-image {
       align-self: center;
       display: grid;
-      height: fit-content;
+      grid-auto-flow: column;
+      grid-template-columns: 1fr 0;
+      // height: fit-content;
+      // overflow: hidden;
+      // max-width: 100%;
+      // background-color: red;
+
       canvas {
-        background-color: red;
-        width: 80%;
+        justify-self: center;
+        align-self: center;
+        width: 200%;
+        max-width: 1640px;
+        // margin-top: calc(auto - (var(--footer-height) + 20px) * -1);
+      }
+      img {
+        &#shrink {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        transition: 0.8s ease-in;
+        justify-self: center;
+        width: 120%;
+        max-width: 1640px;
+        height: auto;
+        padding-left: clamp(10px, 4vw, 60px);
+      }
+    }
+
+    &.fullscreen {
+      // width: calc(100vw - 2 * var(--nav-pad));
+    }
+    &.viewscreen {
+      .gallery-image-close {
+        transition: 0.4s;
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }
@@ -46,7 +73,7 @@
     padding: clamp(12px, 0.7vw, 14px) 0;
     width: clamp(100px, 30%, 140px);
     border: 2px solid #ffffff60;
-    margin-bottom: calc(clamp(0px, 0.8vw, 50px) + 20px);
+    margin-bottom: clamp(0px, 1vw, 70px);
     border-radius: 10rem;
     height: auto;
     transition: 0.4s, 0s left;

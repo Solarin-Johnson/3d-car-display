@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image3d from "../../../components/3d";
 import "./image.scss";
+import thumb from "../../../assets/ferrarri.webp";
 
 export default function GalleryImage({ src, fullscreen }) {
   const [state, setState] = useState(false);
@@ -16,8 +17,8 @@ export default function GalleryImage({ src, fullscreen }) {
     }
   }, [state]);
   return (
-    <>
-      <div className={`gallery-image-close ${!state ? "hide" : ""}`}>
+    <div className={`gallery-image ${state ? "fullscreen" : "viewscreen"}`}>
+      <div className={`gallery-image-close`}>
         <span
           onClick={() => {
             fullscreen(false);
@@ -29,7 +30,8 @@ export default function GalleryImage({ src, fullscreen }) {
         </span>
       </div>
       <div className="car-image">
-        <Image3d src={src} />
+        {state && <Image3d src={src} />}
+        <img src={thumb} id={state && "shrink"} alt="car" />
       </div>
       <div
         onClick={() => {
@@ -40,6 +42,6 @@ export default function GalleryImage({ src, fullscreen }) {
       >
         Explore
       </div>
-    </>
+    </div>
   );
 }
