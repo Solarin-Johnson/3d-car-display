@@ -49,7 +49,6 @@ function AnimatedModel({ props, state }) {
   // });
 
   // Use useFrame for continuous rotation after initial animation
- 
 
   return (
     <a.group ref={groupRef}>

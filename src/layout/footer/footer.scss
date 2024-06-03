@@ -77,13 +77,13 @@
           scroll-behavior: smooth;
           column-gap: 20px;
           padding: 0 10px;
-          overflow: auto;
+          overflow: hidden;
           mask-image: linear-gradient(
             to right,
-            transparent,
+            #00000010,
             #000,
             #000,
-            transparent
+            #00000010
           );
 
           &::-webkit-scrollbar {
