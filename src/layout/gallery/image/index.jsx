@@ -29,7 +29,7 @@ export default function GalleryImage({ src, fullscreen, current }) {
           close
         </span>
       </div>
-      <div className="car-image">
+      <div className={`car-image ${current && "current"}`}>
         {current && <Image3d src={src} state={state} />}
         <img src={thumb} id={state && "shrink"} alt="car" />
       </div>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./footer.scss";
+import thumb from "../../assets/ferrarri.webp";
 
 export default function GalleryFooter({ current, previous, fullscreen }) {
   return (
@@ -41,7 +42,7 @@ const FooterNav = ({ current, previous, fullscreen }) => {
     const carNav = carNavRef.current;
     const clean = carNav.children[1].offsetWidth;
     carNav.scrollTo({
-      left: currentIndex > 0 ? clean * currentIndex + clean / 2.2 : clean / 4,
+      left: currentIndex > 0 ? clean * 1.6 * currentIndex : clean / 2,
       behavior: "smooth",
     });
   }, [currentIndex]);
@@ -56,10 +57,10 @@ const FooterNav = ({ current, previous, fullscreen }) => {
       </span>
       <div className="car-nav" ref={carNavRef}>
         <div id="demo"></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <img src={thumb} alt="thumb" />
+        <img src={thumb} alt="thumb" />
+        <img src={thumb} alt="thumb" />
+        <img src={thumb} alt="thumb" />
         <div id="demo"></div>
       </div>
       <span
