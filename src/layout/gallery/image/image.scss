@@ -143,6 +143,48 @@
   // animation: reveal 2s !important;
 }
 
+.loading {
+  position: absolute;
+  z-index: -1;
+  width: 210px;
+  min-height: 50px;
+  // background-color: red;
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  align-content: center;
+  justify-content: space-between;
+  grid-auto-flow: column;
+  animation: appear 1s;
+  --first-round-transform: translateX(82.5px);
+  --middle-round-transform: translateX(0);
+  --last-round-transform: translateX(-83.5px);
+
+  span {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+
+    &:first-child {
+      animation: round1 4s 1s linear infinite;
+      transform: var(--first-round-transform);
+      background: #85b9dc;
+    }
+    &:nth-child(2) {
+      z-index: 1;
+      transform: var(--middle-round-transform) scale(1.2);
+      background: #7ea7c2;
+      animation: round2 4s 1s linear infinite;
+    }
+    &:last-child {
+      // visibility: hidden;
+      transform: var(--last-round-transform);
+      animation: round3 4s 1s linear infinite;
+      background-color: #70a1c1;
+    }
+  }
+}
+
 @keyframes reveal {
   0% {
     opacity: 0;
@@ -152,5 +194,83 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes round1 {
+  0%,
+  10% {
+    transform: var(--first-round-transform);
+  }
+  20%,
+  30% {
+    transform: translateX(0);
+  }
+  45%,
+  55% {
+    transform: var(--first-round-transform) scale(1.2);
+  }
+  65%,
+  75% {
+    transform: translateX(165px);
+  }
+  90%,
+  100% {
+    transform: var(--first-round-transform);
+  }
+}
+
+@keyframes round2 {
+  0%,
+  10% {
+    transform: var(--middle-round-transform) scale(1.2);
+  }
+  20%,
+  30% {
+    transform: translateX(0) scale(1.2);
+  }
+  45%,
+  55% {
+    transform: translateX(-82.5px);
+  }
+  65%,
+  75% {
+    transform: translateX(-82.5px);
+  }
+  90%,
+  100% {
+    transform: translateX(0) scale(1.2);
+  }
+}
+
+@keyframes round3 {
+  0%,
+  10% {
+    transform: var(--last-round-transform);
+  }
+  20%,
+  30% {
+    transform: translateX(0);
+  }
+  45%,
+  55% {
+    transform: translateX(0);
+  }
+  65%,
+  75% {
+    transform: var(--last-round-transform) scale(1.2);
+  }
+  90%,
+  100% {
+    transform: var(--last-round-transform);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image3d from "../../../components/3d";
 import "./image.scss";
 import thumb from "../../../assets/ferrarri.webp";
+import Loading from "./loading";
 
 export default function GalleryImage({ src, fullscreen, current }) {
   const [state, setState] = useState(false);
@@ -32,6 +33,7 @@ export default function GalleryImage({ src, fullscreen, current }) {
       <div className={`car-image ${current && "current"}`}>
         {current && <Image3d src={src} state={state} />}
         <img src={thumb} id={state && "shrink"} alt="car" />
+        {state && <Loading />}
       </div>
       <div
         onClick={() => {
