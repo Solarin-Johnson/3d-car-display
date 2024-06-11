@@ -9,7 +9,18 @@ export default function App() {
     <>
       <NavBar />
       <Gallery />
+      <ComingSoon />
       {/* <Image3d /> */}
     </>
   );
 }
+
+export const ComingSoon = () => {
+  return (
+    <div className="coming-soon">
+      <h2>
+        Almost there! This page will be available for this screen size shortly.
+      </h2>
+    </div>
+  );
+};

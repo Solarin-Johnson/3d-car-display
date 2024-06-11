@@ -13,5 +13,36 @@ body {
   height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+.coming-soon {
+  justify-self: center;
+  display: none;
+  max-width: 680px;
+  padding: 0 clamp(20px, 5vw, 40px);
+  color: #f6f6f7;
+  align-self: center;
+  text-align: center;
+  line-height: 1.4;
+  font-size: clamp(18px, 2.5vw, 36px);
+  h2 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+  }
 }
+
+@media screen and (max-width: 1024px) {
+  body {
+    .gallery-container,
+    .nav-bar {
+      display: none;
+    }
+    .coming-soon {
+      display: grid;
+      h2 {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// @media (prefers-reduced-motion: no-preference) {
+// }
