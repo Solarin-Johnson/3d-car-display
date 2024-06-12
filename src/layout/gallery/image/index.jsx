@@ -6,6 +6,7 @@ import Loading from "./loading";
 
 export default function GalleryImage({ src, fullscreen, current }) {
   const [state, setState] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const navBar = document.querySelectorAll(".nav-bar")[0];
@@ -14,9 +15,13 @@ export default function GalleryImage({ src, fullscreen, current }) {
       navBar.lastChild.style.visibility = "visible";
       setTimeout(() => {
         navBar.lastChild.style.visibility = state ? "hidden" : "visible";
-      }, 400);
+      }, 250);
     }
+    setLoading(state);
   }, [state]);
+  const handleLoad = () => {
+    setLoading(false);
+  };
   return (
     <div className={`gallery-image ${state ? "fullscreen" : "viewscreen"}`}>
       <div className={`gallery-image-close`}>
@@ -31,9 +36,9 @@ export default function GalleryImage({ src, fullscreen, current }) {
         </span>
       </div>
       <div className={`car-image ${current && "current"}`}>
-        {current && <Image3d src={src} state={state} />}
+        {current && <Image3d src={src} state={state} onLoad={handleLoad} />}
         <img src={thumb} id={state && "shrink"} alt="car" />
-        {state && <Loading />}
+        {loading && <Loading />}
       </div>
       <div
         onClick={() => {

@@ -14,21 +14,22 @@ import { useSpring, a } from "@react-spring/three";
 
 function Model(props) {
   const { scene } = useGLTF(myimage);
+  const { onLoad } = props;
 
-  // Enable shadows for the model
-  scene.traverse((child) => {
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-      // console.log(child.name);
-      // child.material.roughness = 0; // Adjust roughness
-      // child.material.metalness = 0;
-    }
-  });
+  useEffect(() => {
+    // Traverse the scene to enable shadows and apply onLoad callback
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+    if (onLoad) onLoad();
+  }, [scene, onLoad]);
 
   return <primitive object={scene} {...props} />;
 }
-function AnimatedModel({ props, state }) {
+function AnimatedModel({ state, onLoad }) {
   const groupRef = useRef();
   const [animationDone, setAnimationDone] = React.useState(false);
   useEffect(() => {
@@ -39,25 +40,32 @@ function AnimatedModel({ props, state }) {
   }, [state]);
 
   // Initial animation with react-spring
-  // const { scale, rotation } = useSpring({
-  //   from: { scale: [1.1, 1.1, 1.1] },
-  //   to: async (next) => {
-  //     await next({ scale: [1, 1, 1] });
-  //     setAnimationDone(true); // Indicate the animation is done
-  //   },
-  //   config: { duration: 400 },
-  // });
+  const { scale, rotation } = useSpring({
+    from: { scale: [0.6, 0.6, 0.6], rotation: [0, Math.PI / 10, 0] },
+    to: async (next) => {
+      await next({ scale: [1, 1, 1], rotation: [0, 0, 0] });
+    },
+    config: {
+      duration: 800,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+    },
+  });
 
   // Use useFrame for continuous rotation after initial animation
+  // useFrame(() => {
+  //   if (groupRef.current) {
+  //     // groupRef.current.rotation.y -= 0.002; // Continuous rotation speed
+  //   }
+  // });
 
   return (
-    <a.group ref={groupRef}>
-      <Model {...props} />
+    <a.group ref={groupRef} scale={scale} rotation={rotation}>
+      <Model onLoad={onLoad} />
     </a.group>
   );
 }
 
-function Scene({ state }) {
+function Scene({ state, onLoad }) {
   const controlsRef = useRef();
   const { camera } = useThree();
   !state && camera.position.set(17, 1.6, 2);
@@ -83,7 +91,7 @@ function Scene({ state }) {
       <Suspense fallback={null}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[13, 5, 11]} intensity={0.2} />
-        <AnimatedModel state={state} />
+        <AnimatedModel state={state} onLoad={onLoad} />
         {/* <Model /> */}
       </Suspense>
 
@@ -102,7 +110,7 @@ function Scene({ state }) {
   );
 }
 
-export default function Image3d({ state }) {
+export default function Image3d({ state, onLoad }) {
   return (
     <>
       <Canvas
@@ -112,7 +120,7 @@ export default function Image3d({ state }) {
         // camera={{ position: [13, 5, 11], fov: 10 }}
         // style={{ height: "150%" }}
       >
-        <Scene state={state} />
+        <Scene state={state} onLoad={onLoad} />
       </Canvas>
     </>
   );

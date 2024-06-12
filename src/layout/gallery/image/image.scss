@@ -95,7 +95,7 @@
     }
     &.viewscreen {
       .gallery-image-close {
-        transition: 0.4s;
+        transition: 0.2s;
         opacity: 0;
         visibility: hidden;
       }
@@ -155,6 +155,7 @@
   align-content: center;
   justify-content: space-between;
   grid-auto-flow: column;
+  transform: scale(0.8);
   animation: appear 1s;
   --first-round-transform: translateX(82.5px);
   --middle-round-transform: translateX(0);
@@ -168,15 +169,17 @@
     &:first-child {
       animation: round1 4s 1s linear infinite;
       transform: var(--first-round-transform);
-      background: #85b9dc;
+      background: #83b0ce;
+      z-index: 1;
     }
     &:nth-child(2) {
-      z-index: 1;
+      z-index: 2;
       transform: var(--middle-round-transform) scale(1.2);
-      background: #7ea7c2;
+      background: #88c0e5;
       animation: round2 4s 1s linear infinite;
     }
     &:last-child {
+      z-index: 0;
       // visibility: hidden;
       transform: var(--last-round-transform);
       animation: round3 4s 1s linear infinite;
@@ -271,6 +274,6 @@
     transform: scale(0.2);
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.8);
   }
 }
