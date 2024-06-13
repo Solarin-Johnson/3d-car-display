@@ -17,7 +17,10 @@
     height: var(--footer-height);
     .info {
       width: 10vw;
-      font-size: clamp(16px, 1vw, 20px);
+      font-size: clamp(18px, 1.25vw, 28px);
+      background: linear-gradient(to right, #ffffff, #7296ae);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .brands {
       overflow: hidden;

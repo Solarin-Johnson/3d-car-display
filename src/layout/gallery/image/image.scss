@@ -38,7 +38,18 @@
       max-height: 100%;
       padding-left: clamp(10px, 4vw, 60px);
       transition: 0s ease 0s !important;
+      user-select: none;
 
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // background: linear-gradient(0deg, #00000000 0%, #000000ff 100%);
+        z-index: 0;
+      }
       &.current {
         grid-template-columns: 0px 1fr;
       }
@@ -69,6 +80,8 @@
         // max-width: 1640px;
       }
       img {
+        touch-action: none;
+        user-select: none;
         &#shrink {
           opacity: 0;
           transform: scale(1.23);
@@ -87,6 +100,9 @@
       .car-image {
         transition: 0s ease 1s !important;
         grid-template-columns: 100vw 0px !important;
+        &::after {
+          display: none;
+        }
       }
       // margin-top: -80px;
       // --image-pad-bottom: 200px;

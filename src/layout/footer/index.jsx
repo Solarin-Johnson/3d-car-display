@@ -5,7 +5,7 @@ import thumb from "../../assets/ferrarri.webp";
 export default function GalleryFooter({ current, previous, fullscreen }) {
   return (
     <div className="gallery-footer">
-      <div className="info">Company Info</div>
+      <div className="info">Dotjs</div>
       <FooterNav
         current={current}
         previous={previous}
