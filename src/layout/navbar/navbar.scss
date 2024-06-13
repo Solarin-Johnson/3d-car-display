@@ -13,7 +13,8 @@
     width: calc(100vw - var(--nav-pad) * 2);
     align-content: center;
     color: #fffffff5;
-    // z-index: 100;
+    background-color: transparent;
+    z-index: 10;
   }
   &-menu {
     color: #ffffff90;
